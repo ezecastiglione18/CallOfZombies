@@ -41,4 +41,17 @@ public class Jugador {
         // TODO
     }
 
+    public void recibirDanio(int danio){
+        this.objetos.forEach(objeto -> {
+            objeto.recibirDanio(danio);
+        });
+        this.salud -= danio;
+    }
+
+    public void repararObjetos(){
+        this.objetos.forEach(objeto -> {
+            objeto.reparar();
+        });
+    }
+
 }
