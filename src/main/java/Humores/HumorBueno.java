@@ -1,7 +1,20 @@
 package Humores;
 
-public class HumorBueno implements Humor {
-    public void comprarPerk() {
-        // TODO
+import Jugadores.Jugador;
+import Perks.Perk;
+
+public class HumorBueno extends Humor {
+
+    public void comprarPerk(Perk perk, Jugador jugador) throws Exception {
+        if(jugador.tieneDinero(perk.costo())) {
+            jugador.realizarCompraDePerk(perk);
+        } else {
+            jugador.ponerDeMalHumor();
+            throw new Exception("Dinero insuficiente");
+        }
+    }
+
+    public boolean estaDeBuenHumor() {
+        return true;
     }
 }

@@ -2,9 +2,10 @@ package Perks;
 
 import Jugadores.Jugador;
 
-public class Default extends Perk {
-    private int costo = 0;
+public class Plata extends Perk {
+    private int costo = 1500;
+
     public void recompensarKill(Jugador jugador) {
-        jugador.sumarPuntos(1);
+        jugador.sumarPuntos(20);
     }
 }

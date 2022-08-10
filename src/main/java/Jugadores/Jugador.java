@@ -1,6 +1,7 @@
 package Jugadores;
 
 import Humores.Humor;
+import Humores.HumorBueno;
 import Humores.HumorMalo;
 import Objetos.Objeto;
 import Perks.Default;
@@ -12,6 +13,8 @@ import java.util.ArrayList;
 public class Jugador {
     int salud = 100;
     Humor humor = new HumorMalo();
+
+    int zombiesEliminados = 0;
     int dinero = 0;
     ArrayList<Objeto> objetos;
     Perk perk = new Default();
@@ -21,24 +24,25 @@ public class Jugador {
         // TODO
     }
 
-    private void alternarHumor() {
-        // TODO
+    public void comprarPerk(Perk perk) throws Exception {
+        this.humor.comprarPerk(perk, this);
     }
 
-    public void iniciarNuevaRonda() {
-        // TODO
+    public void realizarCompraDePerk(Perk perk) {
+        this.dinero -= perk.costo();
+        this.perk = perk;
     }
 
-    public void comprarPerk(Perk perk) {
-        // TODO
-    }
-
-    public void activarPerk(Jugador this) {
-        // TODO
+    public void revitalizar(int puntosDeSalud) {
+        if(salud + puntosDeSalud > 100) {
+            salud = 100;
+        } else {
+            salud += puntosDeSalud;
+        }
     }
 
     public void atacar(Zombie zombie) {
-        // TODO
+        zombie.recibirDanio(30, this);
     }
 
     public void recibirDanio(int danio){
@@ -54,4 +58,37 @@ public class Jugador {
         });
     }
 
+    public void sumarPuntos(int puntos) {
+        this.puntajeAcumulado += puntos;
+    }
+
+    public void killRealizada() {
+        this.perk.recompensarKill(this);
+
+        this.zombiesEliminados++;
+        if (zombiesEliminados == 50) {
+            this.ponerDeBuenHumor();
+        }
+    }
+
+    public boolean tieneDinero(int costo) {
+        return dinero >= costo;
+    }
+
+    public void ponerDeMalHumor() {
+        this.humor = new HumorMalo();
+        this.zombiesEliminados = 0;
+    }
+
+    public void ponerDeBuenHumor() {
+        this.humor = new HumorBueno();
+    }
+
+    public boolean estaDeBuenHumor() {
+        return humor.estaDeBuenHumor();
+    }
+
+    public boolean estaVivo() {
+        return salud > 0;
+    }
 }

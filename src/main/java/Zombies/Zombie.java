@@ -1,15 +1,24 @@
 package Zombies;
 
+import ControlDelJuego.Partida;
 import Jugadores.Jugador;
 
 abstract public class Zombie {
-    private int vida;
+    private int salud;
 
     public void atacarA(Jugador jugador) {
-        // TODO
+        jugador.recibirDanio(20);
     }
 
-    public void recompensar(Jugador jugador) {
-        // TODO
+    private void morir() {
+        Partida.GetInstance().unZombieMenos();
+    }
+
+    public void recibirDanio(int danio, Jugador jugador) {
+        this.salud -= danio;
+        if(this.salud <= 0) {
+            this.morir();
+            jugador.killRealizada();
+        }
     }
 }

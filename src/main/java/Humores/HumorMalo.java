@@ -1,7 +1,14 @@
 package Humores;
 
-public class HumorMalo implements Humor {
-    public void comprarPerk() {
-        //TODO
+import Jugadores.Jugador;
+import Perks.Perk;
+
+public class HumorMalo extends Humor {
+    public void comprarPerk(Perk perk, Jugador jugador) throws Exception {
+        throw new Exception("No se puede comprar porque el jugador está de mal humor");
+    }
+
+    public boolean estaDeBuenHumor() {
+        return false;
     }
 }

@@ -1,7 +1,14 @@
 package Perks;
 import Jugadores.Jugador;
 
-public interface Perk {
-     public void activar(Jugador jugador);
+abstract public class Perk {
+     private int costo;
+     private int puntosAdicionales;
+
+     public int costo() {
+          return costo;
+     }
+
+     public abstract void recompensarKill(Jugador jugador);
 }
 

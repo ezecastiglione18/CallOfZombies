@@ -1,8 +1,21 @@
 package Jugadores;
 
+import java.util.ArrayList;
+
 public class Equipo {
-    Jugador jugador1;
-    Jugador jugador2;
-    Jugador jugador3;
-    Jugador jugador4;
+    ArrayList<Jugador> jugadores = new ArrayList<>();
+
+    public void malhumor() {
+        for (Jugador jugador : jugadores) {
+            jugador.ponerDeMalHumor();
+        }
+    }
+
+    public void revitalizar() {
+        for (Jugador jugador : jugadores) {
+            if (jugador.estaVivo()) {
+                jugador.revitalizar(50);
+            }
+        }
+    }
 }
