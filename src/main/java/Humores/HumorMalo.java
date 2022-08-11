@@ -11,4 +11,9 @@ public class HumorMalo extends Humor {
     public boolean estaDeBuenHumor() {
         return false;
     }
+
+    @Override
+    public void cambiarHumor(Jugador jugador) {
+        jugador.ponerDeBuenHumor();
+    }
 }

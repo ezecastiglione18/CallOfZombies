@@ -1,9 +1,14 @@
 package Objetos;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class ObjetoComplejo extends Objeto{
     public ArrayList<Objeto> objetos = new ArrayList();
+
+    public ObjetoComplejo(ArrayList<Objeto> lista){
+        this.objetos = lista;
+    }
 
     public int vidaUtil = this.objetos.stream().mapToInt(Objeto::getVidaUtilOriginal).sum();
 
@@ -15,7 +20,9 @@ public class ObjetoComplejo extends Objeto{
     }
 
     public void recalcularVidaUtil(){
-        this.vidaUtil = this.objetos.stream().mapToInt(Objeto::getVidaUtil).sum();
+        for(Objeto objeto : this.objetos){
+            this.vidaUtil += objeto.getVidaUtil();
+        }
     }
 
     public int getVidaUtil(){
@@ -23,7 +30,13 @@ public class ObjetoComplejo extends Objeto{
     }
 
     public void recibirDanio(int danio){
-        int danioPorObjeto = danio / this.objetos.stream().mapToInt(Objeto::getCantidadDeObjetos).sum();
+        int cantidadDeObjetosTotales = 0;
+
+        for(Objeto objeto : this.objetos){
+            cantidadDeObjetosTotales += objeto.getCantidadDeObjetos();
+        }
+
+        int danioPorObjeto = danio / cantidadDeObjetosTotales;
         this.objetos.forEach(objeto -> {
             objeto.recibirDanio(danioPorObjeto);
             if(objeto.getVidaUtil() == 0){
@@ -39,7 +52,13 @@ public class ObjetoComplejo extends Objeto{
     }
 
     public int getCantidadDeObjetos(){
-        return this.objetos.size();
+        int retorno = 0;
+
+        for(Objeto objeto : this.objetos){
+            retorno += objeto.getCantidadDeObjetos();
+        }
+
+        return retorno;
     }
     
 }

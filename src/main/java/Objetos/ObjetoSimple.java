@@ -13,7 +13,6 @@ public class ObjetoSimple extends Objeto{
     public void recibirDanio(int valor){
         if (this.vidaUtil - valor < 0){
             this.vidaUtil = 0;
-            //Jugador.quitarObjeto(this); TODO
         }
         else{
             this.vidaUtil -= valor;

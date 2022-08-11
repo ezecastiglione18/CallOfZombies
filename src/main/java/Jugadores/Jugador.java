@@ -49,6 +49,9 @@ public class Jugador {
     public void recibirDanio(int danio){
         this.objetos.forEach(objeto -> {
             objeto.recibirDanio(danio);
+            if(objeto.getVidaUtil() == 0){
+                this.objetos.remove(objeto);
+            }
         });
         this.salud -= danio;
         if (salud <= 0) {
@@ -103,4 +106,6 @@ public class Jugador {
     public int puntos() {
         return puntos;
     }
+
+    public void recolectarObjeto(Objeto objeto){this.objetos.add(objeto);}
 }
