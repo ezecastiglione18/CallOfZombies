@@ -2,5 +2,8 @@ package Zombies;
 
 public interface ZombiesFactory {
 
-    Zombie crearZombie(/*condicion*/);
+    public static Zombie crearZombie() {
+        return null;
+    }
+
 }

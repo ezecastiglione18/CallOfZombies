@@ -1,5 +1,6 @@
 package Jugadores;
 
+import ControlDelJuego.Partida;
 import Humores.Humor;
 import Humores.HumorBueno;
 import Humores.HumorMalo;
@@ -18,10 +19,10 @@ public class Jugador {
     int dinero = 0;
     ArrayList<Objeto> objetos;
     Perk perk = new Default();
-    int puntajeAcumulado = 0;
+    int puntos = 0;
 
     private void morir() {
-        // TODO
+        Partida.GetInstance().unJugadorMenos(this);
     }
 
     public void comprarPerk(Perk perk) throws Exception {
@@ -50,6 +51,9 @@ public class Jugador {
             objeto.recibirDanio(danio);
         });
         this.salud -= danio;
+        if (salud <= 0) {
+            this.morir();
+        }
     }
 
     public void repararObjetos(){
@@ -59,16 +63,20 @@ public class Jugador {
     }
 
     public void sumarPuntos(int puntos) {
-        this.puntajeAcumulado += puntos;
+        this.puntos += puntos;
     }
 
-    public void killRealizada() {
-        this.perk.recompensarKill(this);
-
+    public void matoUnZombie() {
+        this.perk.sumarPuntosPorMatar(this);
+        this.ganarDinero(5);
         this.zombiesEliminados++;
         if (zombiesEliminados == 50) {
             this.ponerDeBuenHumor();
         }
+    }
+
+    private void ganarDinero(int dinero) {
+        this.dinero += dinero;
     }
 
     public boolean tieneDinero(int costo) {
@@ -90,5 +98,9 @@ public class Jugador {
 
     public boolean estaVivo() {
         return salud > 0;
+    }
+
+    public int puntos() {
+        return puntos;
     }
 }

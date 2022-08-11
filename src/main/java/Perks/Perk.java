@@ -9,6 +9,6 @@ abstract public class Perk {
           return costo;
      }
 
-     public abstract void recompensarKill(Jugador jugador);
+     public abstract void sumarPuntosPorMatar(Jugador jugador);
 }
 

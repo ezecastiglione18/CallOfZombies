@@ -2,8 +2,9 @@ package Zombies;
 
 public class ZombieComunFactory implements ZombiesFactory {
 
-    public Zombie crearZombie(/*condicion*/) {
-
-        return null;
+    public static Zombie crearZombie() {
+        Zombie zombie = new Zombie();
+        zombie.salud(100);
+        return zombie;
     }
 }
