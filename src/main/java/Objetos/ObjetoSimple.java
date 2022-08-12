@@ -6,6 +6,10 @@ public class ObjetoSimple extends Objeto{
     int vidaUtil = 25;
     int vidaUtilOriginal = 25;
 
+    public ObjetoSimple(NombreDeObjeto nombreParam) {
+        super(nombreParam);
+    }
+
     public void reparar(){
         this.vidaUtil = this.vidaUtilOriginal;
     }

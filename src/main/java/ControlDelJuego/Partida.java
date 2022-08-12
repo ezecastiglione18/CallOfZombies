@@ -4,6 +4,7 @@ import Jugadores.Equipo;
 import Jugadores.Jugador;
 import MailAPI.MailApi;
 import Objetos.Objeto;
+import Objetos.ObjetosFactory;
 import Zombies.Zombie;
 import Zombies.ZombieComunFactory;
 import Zombies.ZombieEspecialFactory;
@@ -62,10 +63,6 @@ public class Partida {
                 zombies.add(ZombieComunFactory.crearZombie());
             }
         }
-        // crea objetos
-        for ( int i = 0; i < ratioObjetos * numeroDeRonda; i++) {
-            // TODO
-        }
     }
 
     private boolean esRondaPar() {
@@ -92,8 +89,10 @@ public class Partida {
         }
     }
 
-
     private void crearObjetos() {
-        // TODO
+        // crea objetos
+        for ( int i = 0; i < ratioObjetos * numeroDeRonda; i++) {
+            this.objetos.add(ObjetosFactory.crearObjeto());
+        }
     }
 }

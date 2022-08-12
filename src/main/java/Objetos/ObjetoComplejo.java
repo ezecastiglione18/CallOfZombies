@@ -4,15 +4,22 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ObjetoComplejo extends Objeto{
-    public ArrayList<Objeto> objetos = new ArrayList();
+    public ArrayList<Objeto> objetos;
+    public int vidaUtil;
+    public int vidaUtilOriginal;
 
-    public ObjetoComplejo(ArrayList<Objeto> lista){
+    public ObjetoComplejo(ArrayList<Objeto> lista, NombreDeObjeto nombreParam){
+        super(nombreParam);
         this.objetos = lista;
+        this.calcularVidaUtilYOriginal();
     }
 
-    public int vidaUtil = this.objetos.stream().mapToInt(Objeto::getVidaUtilOriginal).sum();
-
-    public int vidaUtilOriginal = this.objetos.stream().mapToInt(Objeto::getVidaUtilOriginal).sum();
+    public void calcularVidaUtilYOriginal(){
+        for(Objeto objeto : this.objetos){
+            this.vidaUtil += objeto.getVidaUtil();
+            this.vidaUtilOriginal += objeto.getVidaUtilOriginal();
+        }
+    }
 
     public void reparar(){
         this.objetos.forEach(Objeto::reparar);

@@ -5,6 +5,10 @@ import Jugadores.Jugador;
 abstract public class Objeto {
     NombreDeObjeto nombre;
 
+    public Objeto(NombreDeObjeto nombreParam){
+        this.nombre = nombreParam;
+    }
+
     abstract public void reparar();
 
     abstract public void recibirDanio(int valor);
