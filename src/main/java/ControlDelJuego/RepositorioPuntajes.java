@@ -14,5 +14,11 @@ public class RepositorioPuntajes {
         }
         return instancia;
     }
-    // TODO
+    public void agregarPartida(Equipo equipo, Integer puntaje){
+        //TODO
+    }
+
+    public void ordenarLista(){
+
+    }
 }

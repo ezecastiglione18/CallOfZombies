@@ -4,6 +4,7 @@ import Jugadores.Jugador;
 
 public class Oro extends Perk {
     private int costo = 3000;
+    public String discriminante = "oro";
 
     public void sumarPuntosPorMatar(Jugador jugador) {
         if(jugador.estaDeBuenHumor()) {

@@ -9,20 +9,41 @@ import Perks.Default;
 import Perks.Perk;
 import Zombies.Zombie;
 
+import javax.persistence.*;
+import javax.transaction.TransactionScoped;
 import java.util.ArrayList;
 
+@Entity
 public class Jugador {
+    @Id @GeneratedValue
+    int id_jugador;
+    @Transient
     int salud = 100;
+
+    @Transient //@ManyToOne
     Humor humor = new HumorMalo();
 
+    @ManyToOne
+    Equipo equipo;
+
+    @Transient
     int zombiesEliminados = 0;
+    @Transient
     int dinero = 0;
+    @Transient
     ArrayList<Objeto> objetos;
+
+    @Transient //@OneToOne
     Perk perk = new Default();
+
     int puntos = 0;
 
     private void morir() {
         Partida.GetInstance().unJugadorMenos(this);
+    }
+
+    public void setEquipo (Equipo equipo){
+        this.equipo = equipo;
     }
 
     public void comprarPerk(Perk perk) throws Exception {

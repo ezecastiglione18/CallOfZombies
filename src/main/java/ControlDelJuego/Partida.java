@@ -13,7 +13,7 @@ import java.util.ArrayList;
 
 public class Partida {
     private static Partida instancia = null;
-    private double ratioZombies = 1.0; // TODO
+    private double ratioZombies = 1.0;
     private double ratioObjetos = 1.0;
     private Equipo equipo;
     private int numeroDeRonda = 0;
@@ -34,11 +34,13 @@ public class Partida {
     }
 
     public void iniciarPartida(String nombreEquipo, String correoEquipo) {
-        this.equipo = Equipo.GetInstance(nombreEquipo, correoEquipo);
+        this.equipo = new Equipo(nombreEquipo, correoEquipo);
         this.iniciarRonda();
     }
 
     public void finalizarPartida() {
+        Integer puntaje = this.equipo.puntos();
+        RepositorioPuntajes.GetInstance().agregarPartida(this.equipo, puntaje);
         MailApi.notificar(this.equipo);
         equipo = null;
     }

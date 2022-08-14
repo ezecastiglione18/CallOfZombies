@@ -2,29 +2,41 @@ package Jugadores;
 
 import ControlDelJuego.Partida;
 
+import javax.persistence.*;
 import java.util.ArrayList;
 
+@Entity
 public class Equipo {
-    private static Equipo instancia = null;
+    @Id @GeneratedValue
+    int id_equipo;
+
+    //@Transient
+    //private static Equipo instancia = null;
     private String nombre;
     private String correo;
+
+    @OneToMany
     private ArrayList<Jugador> jugadores = new ArrayList();
     private int puntos = 0;
 
-    public static Equipo GetInstance(String nombre, String correo) {
+    /*public static Equipo GetInstance(String nombre, String correo) {
         if (instancia == null) {
             instancia = new Equipo(nombre, correo);
         }
         return instancia;
-    }
+    }*/
 
-    private Equipo (String nombre, String correo) {
+    public Equipo (String nombre, String correo) {
         this.nombre = nombre;
         this.correo = correo;
         this.jugadores.add(new Jugador());
         this.jugadores.add(new Jugador());
         this.jugadores.add(new Jugador());
         this.jugadores.add(new Jugador());
+
+        for(Jugador jugador : this.jugadores){
+            jugador.setEquipo(this);
+        }
     }
 
     public String nombre() {
@@ -66,7 +78,7 @@ public class Equipo {
         jugadores.remove(jugador);
     }
 
-    public Object puntos() {
+    public Integer puntos() {
         return puntos;
     }
 }
