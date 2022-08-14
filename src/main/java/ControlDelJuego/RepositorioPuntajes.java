@@ -12,7 +12,7 @@ import static java.util.Comparator.comparing;
 
 public class RepositorioPuntajes {
     private static RepositorioPuntajes instancia;
-    public ArrayList<Pair<Equipo,Integer>> puntajes;
+    public ArrayList<Pair<Equipo,Integer>> puntajes = new ArrayList<>();
 
     public static RepositorioPuntajes GetInstance() {
         if (instancia == null) {
@@ -37,10 +37,10 @@ public class RepositorioPuntajes {
 
     public void ordenarLista(){
         //OPCION 1
-        Collections.sort(this.puntajes, Comparator.comparing(dupla -> dupla.getValue()));
+        Collections.sort(this.puntajes, comparing(p -> -p.getValue()));
 
         //OPCION 2
-        final Comparator<Pair<Equipo, Integer>> c = reverseOrder(comparing(Pair::getValue));
-        this.puntajes.stream().sorted(c);
+        //final Comparator<Pair<Equipo, Integer>> c = reverseOrder(comparing(Pair::getValue));
+        //this.puntajes.stream().sorted(c);
     }
 }

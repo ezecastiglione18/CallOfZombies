@@ -26,7 +26,6 @@ public class PartidaTest {
     }
 
     @Test
-    //TODO ==> REVISAR PORQUE LA LISTA DE PUNTAJES ES NULL
     public void seGuardaBienElPuntajeDeEquipoDistintos(){
         partida.iniciarPartida("Killers", "killers@gmail.com");
         Equipo equipoKiller = partida.equipo();
@@ -54,5 +53,43 @@ public class PartidaTest {
         ArrayList<Pair<Equipo, Integer>> equipos = RepositorioPuntajes.GetInstance().getPuntajes();
 
         Assertions.assertEquals(false, equipos.isEmpty());
+    }
+
+    @Test
+    public void seOrdenanLosElementosDeLaLista(){
+        partida.iniciarPartida("Killers", "killers@gmail.com");
+        Equipo equipoKiller = partida.equipo();
+
+        for(Jugador jugador : equipoKiller.getJugadores()){
+            jugador.sumarPuntos(80);
+        }
+
+        Integer puntaje = equipoKiller.puntos();
+
+        RepositorioPuntajes.GetInstance().agregarPartida(equipoKiller, puntaje);
+        ///////////////////////////////////////////////////////////////////////////////////////////////////
+        partida.iniciarPartida("Los mmortales", "");
+        Equipo equipoMortal = partida.equipo();
+
+        for(Jugador jugador : equipoMortal.getJugadores()){
+            jugador.sumarPuntos(100);
+        }
+
+        Integer puntaje2 = equipoMortal.puntos();
+
+        RepositorioPuntajes.GetInstance().agregarPartida(equipoMortal, puntaje2);
+        ///////////////////////////////////////////////////////////////////////////////////////////////////
+        partida.iniciarPartida("Los maquinas", "");
+        Equipo equipoMaquina = partida.equipo();
+
+        Integer puntaje3 = equipoMaquina.puntos();
+
+        RepositorioPuntajes.GetInstance().agregarPartida(equipoMaquina, puntaje3);
+
+        RepositorioPuntajes.GetInstance().ordenarLista();
+
+        ArrayList<Pair<Equipo, Integer>> lista = RepositorioPuntajes.GetInstance().puntajes;
+
+        Assertions.assertEquals(puntaje2, lista.get(0).getValue());
     }
 }
