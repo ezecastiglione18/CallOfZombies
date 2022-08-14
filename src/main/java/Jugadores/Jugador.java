@@ -88,6 +88,7 @@ public class Jugador {
 
     public void sumarPuntos(int puntos) {
         this.puntos += puntos;
+        this.equipo.recalcularPuntos();
     }
 
     public void matoUnZombie() {

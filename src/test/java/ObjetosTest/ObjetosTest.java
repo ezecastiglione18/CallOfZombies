@@ -29,7 +29,7 @@ public class ObjetosTest {
 
     Objeto objetoComplejoTest = new ObjetoComplejo(objetosParaComplejo, NombreDeObjeto.ARCO_Y_FLECHA);
     objetoComplejoTest.recibirDanio(90);
-    
+
     Integer vidaUtil = objetoComplejoTest.getVidaUtil();
     Assertions.assertEquals(20, vidaUtil);
   }

@@ -6,7 +6,8 @@ import java.sql.*;
 public class ConexionABaseDatos {
   public static void main(String[] args){
     try {
-      String jdbcURL = "jdbc:mysql://localhost:3306/CallOfZombies";
+      Class.forName("com.mysql.cj.jdbc.Driver");
+      String jdbcURL = "jdbc:mysql://localhost:3306/parcial";
       String username = "root";
       String password = "root";
       Connection connection = DriverManager.getConnection(jdbcURL, username, password);
@@ -14,7 +15,7 @@ public class ConexionABaseDatos {
       ResultSet rs = stmt.executeQuery("show databases;");
       System.out.println("Conectado");
     }
-    catch (Error | SQLException error) {
+    catch (Error | SQLException | ClassNotFoundException error) {
       System.out.println(error);
     }
   }

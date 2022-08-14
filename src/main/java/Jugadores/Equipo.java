@@ -73,6 +73,12 @@ public class Equipo {
         }
     }
 
+    public void recalcularPuntos(){
+        for(Jugador jugador : this.jugadores){
+            this.puntos += jugador.puntos();
+        }
+    }
+
     public void unJugadorMenos(Jugador jugador) {
         this.puntos += jugador.puntos();
         jugadores.remove(jugador);
