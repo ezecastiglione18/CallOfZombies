@@ -63,6 +63,10 @@ public class Jugador {
         }
     }
 
+    public int getDinero(){
+        return this.dinero;
+    }
+
     public void atacar(Zombie zombie) {
         zombie.recibirDanio(30, this);
     }
@@ -100,6 +104,10 @@ public class Jugador {
         }
     }
 
+    public Humor getHumor(){
+        return this.humor;
+    }
+
     private void ganarDinero(int dinero) {
         this.dinero += dinero;
     }
@@ -110,7 +118,7 @@ public class Jugador {
 
     public void ponerDeMalHumor() {
         this.humor = new HumorMalo();
-        this.zombiesEliminados = 0;
+        //this.zombiesEliminados = 0;
     }
 
     public void ponerDeBuenHumor() {

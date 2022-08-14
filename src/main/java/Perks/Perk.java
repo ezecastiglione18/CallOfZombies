@@ -13,9 +13,7 @@ abstract public class Perk {
      //@Transient
      public int puntosAdicionales;
 
-     public int costo() {
-          return costo;
-     }
+     public abstract int costo();
 
      public abstract void sumarPuntosPorMatar(Jugador jugador);
 }

@@ -10,8 +10,8 @@ public class HumorBueno extends Humor {
         if(jugador.tieneDinero(perk.costo())) {
             jugador.realizarCompraDePerk(perk);
         } else {
-            jugador.ponerDeMalHumor();
-            throw new Exception("Dinero insuficiente");
+            this.cambiarHumor(jugador);
+            //throw new Exception("Dinero insuficiente");
         }
     }
 

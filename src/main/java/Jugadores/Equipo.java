@@ -15,7 +15,7 @@ public class Equipo {
     private String nombre;
     private String correo;
 
-    @OneToMany
+    //@OneToMany
     private ArrayList<Jugador> jugadores = new ArrayList();
     private int puntos = 0;
 

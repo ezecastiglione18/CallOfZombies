@@ -8,12 +8,18 @@
     <persistence-unit name="db" transaction-type="RESOURCE_LOCAL">
         <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
 
+        <class>Jugadores.Jugador</class>
+        <class>Jugadores.Equipo</class>
+        <!--
+         <class>Perks.Perk</class>
+         <class>Humores.Humor</class>
+         -->
 
         <properties>
             <property name="hibernate.archive.autodetection" value="class"/>
 
             <property name="hibernate.connection.driver_class" value="com.mysql.jdbc.Driver" />
-            <property name="hibernate.connection.url" value="jdbc:mysql://localhost:3306/CallOfZombies" />
+            <property name="hibernate.connection.url" value="jdbc:mysql://localhost:3306/parcial" />
             <property name="hibernate.connection.username" value="root" /> 
             <property name="hibernate.connection.password" value="root" />
 
