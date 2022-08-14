@@ -1,7 +1,7 @@
 package Objetos;
 
 import java.util.ArrayList;
-import java.util.List;
+import java.util.ConcurrentModificationException;
 
 public class ObjetoComplejo extends Objeto{
     public ArrayList<Objeto> objetos;
@@ -22,8 +22,11 @@ public class ObjetoComplejo extends Objeto{
     }
 
     public void reparar(){
-        this.objetos.forEach(Objeto::reparar);
-        this.recalcularVidaUtil();
+        //this.objetos.forEach(Objeto::reparar);
+        for(Objeto objeto : this.objetos){
+           objeto.reparar();
+        }
+        this.vidaUtil = this.vidaUtilOriginal;
     }
 
     public void recalcularVidaUtil(){
@@ -33,24 +36,34 @@ public class ObjetoComplejo extends Objeto{
     }
 
     public int getVidaUtil(){
-        return this.vidaUtil;
+        int vidaUtilTotal = 0;
+        for(Objeto objeto : this.objetos){
+            vidaUtilTotal += objeto.getVidaUtil();
+        }
+        return vidaUtilTotal;
     }
 
     public void recibirDanio(int danio){
-        int cantidadDeObjetosTotales = 0;
+        try{
+            int cantidadDeObjetosTotales = this.getCantidadDeObjetos();
 
-        for(Objeto objeto : this.objetos){
-            cantidadDeObjetosTotales += objeto.getCantidadDeObjetos();
-        }
+            int danioPorObjeto = danio / cantidadDeObjetosTotales;
 
-        int danioPorObjeto = danio / cantidadDeObjetosTotales;
-        this.objetos.forEach(objeto -> {
-            objeto.recibirDanio(danioPorObjeto);
-            if(objeto.getVidaUtil() == 0){
-                this.objetos.remove(objeto);
-                this.recalcularVidaUtil();
+            int nuevaVidaUtil = 0;
+
+            for(Objeto objeto : this.objetos){
+                objeto.recibirDanio(danioPorObjeto);
+                if(objeto.getVidaUtil() == 0){
+                    this.objetos.remove(objeto);
+                }
+                nuevaVidaUtil += objeto.getVidaUtil();
+                //this.recalcularVidaUtil();
             }
-        });
+            this.vidaUtil = nuevaVidaUtil;
+        }
+        catch (Error | ConcurrentModificationException error){
+            System.out.println(error);
+        }
     }
 
     @Override
