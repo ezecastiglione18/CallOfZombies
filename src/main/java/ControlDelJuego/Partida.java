@@ -17,7 +17,7 @@ public class Partida {
     private double ratioObjetos = 1.0;
     private Equipo equipo;
     private int numeroDeRonda = 0;
-    private ArrayList<Zombie> zombies = new ArrayList<Zombie>();
+    public ArrayList<Zombie> zombies = new ArrayList<Zombie>();
     private ArrayList<Objeto> objetos = new ArrayList<Objeto>();
 
     private Partida() {};
@@ -53,7 +53,7 @@ public class Partida {
         this.equipo.revitalizar();
     }
 
-    private void crearZombies() {
+    public void crearZombies() {
         if (this.esRondaPar()) {
             // crea zombies
             for ( int i = 0; i < ratioZombies * numeroDeRonda; i++) {
@@ -77,10 +77,15 @@ public class Partida {
         this.iniciarRonda();
     }
 
-    public void unJugadorMenos(Jugador jugador) {
-        equipo.unJugadorMenos(jugador);
-        if(equipo.cantidadDeJugadoresVivos() == 0) {
-            this.finalizarPartida();
+    public void unJugadorMenos(Jugador jugador) throws NullPointerException{
+        try{
+            //equipo.unJugadorMenos(jugador);
+            if(equipo.cantidadDeJugadoresVivos() == 0) {
+                this.finalizarPartida();
+            }
+        }
+        catch(Exception e){
+            System.out.println(e);
         }
     }
 

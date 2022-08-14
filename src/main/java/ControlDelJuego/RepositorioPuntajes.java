@@ -2,6 +2,8 @@ package ControlDelJuego;
 
 import Jugadores.Equipo;
 import javafx.util.Pair;
+
+import javax.persistence.criteria.CriteriaBuilder;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
@@ -9,8 +11,8 @@ import static java.util.Collections.reverseOrder;
 import static java.util.Comparator.comparing;
 
 public class RepositorioPuntajes {
-    private static RepositorioPuntajes instancia = null;
-    private ArrayList<Pair<Equipo,Integer>> puntajes;
+    private static RepositorioPuntajes instancia;
+    public ArrayList<Pair<Equipo,Integer>> puntajes;
 
     public static RepositorioPuntajes GetInstance() {
         if (instancia == null) {
@@ -19,9 +21,18 @@ public class RepositorioPuntajes {
         return instancia;
     }
     public void agregarPartida(Equipo equipo, Integer puntaje){
-        Pair<Equipo, Integer> nuevoPuntaje = new Pair<>(equipo, puntaje);
-        this.puntajes.add(nuevoPuntaje);
-        this.ordenarLista();
+        try{
+            Pair<Equipo, Integer> nuevoPuntaje = new Pair<>(equipo, puntaje);
+            this.puntajes.add(nuevoPuntaje);
+            //this.ordenarLista();
+        }
+        catch (Exception e){
+
+        }
+    }
+
+    public ArrayList<Pair<Equipo, Integer>> getPuntajes(){
+        return this.puntajes;
     }
 
     public void ordenarLista(){

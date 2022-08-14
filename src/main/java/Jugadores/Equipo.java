@@ -16,7 +16,7 @@ public class Equipo {
     private String correo;
 
     //@OneToMany
-    private ArrayList<Jugador> jugadores = new ArrayList();
+    public ArrayList<Jugador> jugadores = new ArrayList();
     private int puntos = 0;
 
     /*public static Equipo GetInstance(String nombre, String correo) {
@@ -67,10 +67,16 @@ public class Equipo {
 
     public void premiarSupervivencia(int premio) {
         for (Jugador jugador : jugadores) {
-            if (jugador.estaVivo()) {
-                jugador.sumarPuntos(premio);
-            }
+            jugador.sumarPuntos(premio);
         }
+    }
+
+    public void sumarPuntos(int cantidad){
+        this.puntos += cantidad;
+    }
+
+    public void eliminarJugador(Jugador jugador){
+        this.jugadores.remove(jugador);
     }
 
     public void recalcularPuntos(){
@@ -80,11 +86,15 @@ public class Equipo {
     }
 
     public void unJugadorMenos(Jugador jugador) {
-        this.puntos += jugador.puntos();
+        //this.puntos += jugador.puntos();
         jugadores.remove(jugador);
     }
 
     public Integer puntos() {
         return puntos;
+    }
+
+    public ArrayList<Jugador> getJugadores(){
+        return this.jugadores;
     }
 }

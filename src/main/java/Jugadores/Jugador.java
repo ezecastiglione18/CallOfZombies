@@ -38,7 +38,8 @@ public class Jugador {
 
     int puntos = 0;
 
-    private void morir() {
+    public void morir() {
+        this.equipo.eliminarJugador(this);
         Partida.GetInstance().unJugadorMenos(this);
     }
 
@@ -92,7 +93,8 @@ public class Jugador {
 
     public void sumarPuntos(int puntos) {
         this.puntos += puntos;
-        this.equipo.recalcularPuntos();
+        //this.equipo.recalcularPuntos();
+        this.equipo.sumarPuntos(puntos);
     }
 
     public void matoUnZombie() {
@@ -108,7 +110,7 @@ public class Jugador {
         return this.humor;
     }
 
-    private void ganarDinero(int dinero) {
+    public void ganarDinero(int dinero) {
         this.dinero += dinero;
     }
 
