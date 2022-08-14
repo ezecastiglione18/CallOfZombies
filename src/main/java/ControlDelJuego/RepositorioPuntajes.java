@@ -24,7 +24,7 @@ public class RepositorioPuntajes {
         try{
             Pair<Equipo, Integer> nuevoPuntaje = new Pair<>(equipo, puntaje);
             this.puntajes.add(nuevoPuntaje);
-            //this.ordenarLista();
+            this.ordenarLista();
         }
         catch (Exception e){
 
