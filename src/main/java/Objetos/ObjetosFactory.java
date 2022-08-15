@@ -32,8 +32,22 @@ public class ObjetosFactory {
 
         NombreDeObjeto nombre = objComplejos[new Random().nextInt(objComplejos.length)];
 
-        //TODO => Verificar como generar una lista con elementos random de un tipo
+        //TODO => Verificar como tambien incluir objetos complejos (testear bloque comentado)
         ArrayList<Objeto> lista = new ArrayList<>();
+        NombreDeObjeto nombre1 = objSimples[new Random().nextInt(objSimples.length)];
+        Objeto objetoCreado1 = new ObjetoSimple(nombre1);
+        NombreDeObjeto nombre2 = objSimples[new Random().nextInt(objSimples.length)];
+        Objeto objetoCreado2 = new ObjetoSimple(nombre2);
+        NombreDeObjeto nombre3 = objSimples[new Random().nextInt(objSimples.length)];
+        Objeto objetoCreado3 = new ObjetoSimple(nombre3);
+        lista.add(objetoCreado1);
+        lista.add(objetoCreado2);
+        lista.add(objetoCreado3);
+
+        /*for(int i = 1; i <= 3; i++){
+            Objeto objetoCreado = ObjetosFactory.crearObjeto();
+            lista.add(objetoCreado);
+        }*/
         Objeto objetoCreadoComplejo = new ObjetoComplejo(lista, nombre);
         return objetoCreadoComplejo;
     }
