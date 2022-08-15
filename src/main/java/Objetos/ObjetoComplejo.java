@@ -22,7 +22,6 @@ public class ObjetoComplejo extends Objeto{
     }
 
     public void reparar(){
-        //this.objetos.forEach(Objeto::reparar);
         for(Objeto objeto : this.objetos){
            objeto.reparar();
         }
@@ -57,7 +56,6 @@ public class ObjetoComplejo extends Objeto{
                     this.objetos.remove(objeto);
                 }
                 nuevaVidaUtil += objeto.getVidaUtil();
-                //this.recalcularVidaUtil();
             }
             this.vidaUtil = nuevaVidaUtil;
         }

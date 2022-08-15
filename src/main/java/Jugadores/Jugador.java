@@ -20,7 +20,7 @@ public class Jugador {
     @Transient
     int salud = 100;
 
-    @Transient //@ManyToOne
+    @Transient
     Humor humor = new HumorMalo();
 
     @ManyToOne
@@ -33,7 +33,7 @@ public class Jugador {
     @Transient
     ArrayList<Objeto> objetos;
 
-    @Transient //@OneToOne
+    @Transient
     Perk perk = new Default();
 
     int puntos = 0;
@@ -93,7 +93,6 @@ public class Jugador {
 
     public void sumarPuntos(int puntos) {
         this.puntos += puntos;
-        //this.equipo.recalcularPuntos();
         this.equipo.sumarPuntos(puntos);
     }
 
@@ -120,7 +119,7 @@ public class Jugador {
 
     public void ponerDeMalHumor() {
         this.humor = new HumorMalo();
-        //this.zombiesEliminados = 0;
+        this.zombiesEliminados = 0;
     }
 
     public void ponerDeBuenHumor() {

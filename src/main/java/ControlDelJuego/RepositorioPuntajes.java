@@ -36,11 +36,6 @@ public class RepositorioPuntajes {
     }
 
     public void ordenarLista(){
-        //OPCION 1
         Collections.sort(this.puntajes, comparing(p -> -p.getValue()));
-
-        //OPCION 2
-        //final Comparator<Pair<Equipo, Integer>> c = reverseOrder(comparing(Pair::getValue));
-        //this.puntajes.stream().sorted(c);
     }
 }

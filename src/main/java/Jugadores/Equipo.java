@@ -10,21 +10,12 @@ public class Equipo {
     @Id @GeneratedValue
     int id_equipo;
 
-    //@Transient
-    //private static Equipo instancia = null;
     private String nombre;
     private String correo;
 
-    //@OneToMany
+    @Transient
     public ArrayList<Jugador> jugadores = new ArrayList();
-    private int puntos = 0;
-
-    /*public static Equipo GetInstance(String nombre, String correo) {
-        if (instancia == null) {
-            instancia = new Equipo(nombre, correo);
-        }
-        return instancia;
-    }*/
+    public int puntos = 0;
 
     public Equipo (String nombre, String correo) {
         this.nombre = nombre;
@@ -86,8 +77,7 @@ public class Equipo {
     }
 
     public void unJugadorMenos(Jugador jugador) {
-        //this.puntos += jugador.puntos();
-        jugadores.remove(jugador);
+        this.jugadores.remove(jugador);
     }
 
     public Integer puntos() {

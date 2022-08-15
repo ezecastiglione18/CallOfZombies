@@ -1,7 +1,5 @@
 package Objetos;
 
-import com.sun.org.apache.bcel.internal.generic.RETURN;
-
 import java.util.ArrayList;
 import java.util.Random;
 
@@ -32,7 +30,6 @@ public class ObjetosFactory {
 
         NombreDeObjeto nombre = objComplejos[new Random().nextInt(objComplejos.length)];
 
-        //TODO => Verificar como tambien incluir objetos complejos (testear bloque comentado)
         ArrayList<Objeto> lista = new ArrayList<>();
         NombreDeObjeto nombre1 = objSimples[new Random().nextInt(objSimples.length)];
         Objeto objetoCreado1 = new ObjetoSimple(nombre1);
@@ -44,10 +41,7 @@ public class ObjetosFactory {
         lista.add(objetoCreado2);
         lista.add(objetoCreado3);
 
-        /*for(int i = 1; i <= 3; i++){
-            Objeto objetoCreado = ObjetosFactory.crearObjeto();
-            lista.add(objetoCreado);
-        }*/
+
         Objeto objetoCreadoComplejo = new ObjetoComplejo(lista, nombre);
         return objetoCreadoComplejo;
     }

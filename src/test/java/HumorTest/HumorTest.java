@@ -44,8 +44,6 @@ public class HumorTest {
       jugador.matoUnZombie();
     }
 
-    Integer dinero = jugador.getDinero(); //Dinero = 505
-
     jugador.comprarPerk(new Diamante());
 
     Assertions.assertEquals(false, jugador.getHumor().estaDeBuenHumor());

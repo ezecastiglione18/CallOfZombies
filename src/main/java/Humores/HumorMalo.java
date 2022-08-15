@@ -4,7 +4,6 @@ import Jugadores.Jugador;
 import Perks.Perk;
 
 public class HumorMalo extends Humor {
-    public String discriminante = "mal humor";
     public void comprarPerk(Perk perk, Jugador jugador) throws Exception {
         throw new Exception("No se puede comprar porque el jugador está de mal humor");
     }

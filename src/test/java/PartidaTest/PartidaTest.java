@@ -16,11 +16,7 @@ public class PartidaTest {
     @Test
     public void seGeneranZombiesCorrectamente(){
         partida.iniciarPartida("Killers", "killers@gmail.com");
-        Equipo equipo = partida.equipo();
-        Jugador jugador1 = equipo.jugador(0);
-        Jugador jugador2 = equipo.jugador(1);
-        Jugador jugador3 = equipo.jugador(2);
-        Jugador jugador4 = equipo.jugador(3);
+        //Equipo equipo = partida.equipo();
 
         Assertions.assertEquals(false, partida.zombies.isEmpty());
     }

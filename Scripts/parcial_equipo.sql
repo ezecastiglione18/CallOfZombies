@@ -25,7 +25,6 @@ DROP TABLE IF EXISTS `equipo`;
 CREATE TABLE `equipo` (
   `id_equipo` int NOT NULL AUTO_INCREMENT,
   `correo` varchar(255) DEFAULT NULL,
-  `jugadores` tinyblob,
   `nombre` varchar(255) DEFAULT NULL,
   `puntos` int NOT NULL,
   PRIMARY KEY (`id_equipo`)

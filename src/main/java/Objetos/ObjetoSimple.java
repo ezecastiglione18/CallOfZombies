@@ -1,7 +1,5 @@
 package Objetos;
 
-import Jugadores.Jugador;
-
 public class ObjetoSimple extends Objeto{
     int vidaUtil = 25;
     int vidaUtilOriginal = 25;

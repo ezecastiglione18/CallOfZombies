@@ -13,7 +13,6 @@ public class ObjetosTest {
 
   @Test
   public void daniarObjetoComplejo(){
-    //TODO REVISAR
     Objeto objetoSimple1 = new ObjetoSimple(NombreDeObjeto.ORO);
     Objeto objetoSimple2 = new ObjetoSimple(NombreDeObjeto.SOGA);
     ArrayList<Objeto> listaObjs = new ArrayList<>();

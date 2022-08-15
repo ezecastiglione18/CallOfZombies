@@ -4,7 +4,6 @@ import Jugadores.Jugador;
 
 public class Oro extends Perk {
     private int costo = 3000;
-    public String discriminante = "oro";
 
     @Override
     public int costo() {

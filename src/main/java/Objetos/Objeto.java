@@ -1,7 +1,5 @@
 package Objetos;
 
-import Jugadores.Jugador;
-
 abstract public class Objeto {
     NombreDeObjeto nombre;
 

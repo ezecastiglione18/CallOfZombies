@@ -4,14 +4,12 @@ import Jugadores.Jugador;
 import Perks.Perk;
 
 public class HumorBueno extends Humor {
-    public String discriminante = "buen humor";
 
-    public void comprarPerk(Perk perk, Jugador jugador) throws Exception {
+    public void comprarPerk(Perk perk, Jugador jugador){
         if(jugador.tieneDinero(perk.costo())) {
             jugador.realizarCompraDePerk(perk);
         } else {
             this.cambiarHumor(jugador);
-            //throw new Exception("Dinero insuficiente");
         }
     }
 
