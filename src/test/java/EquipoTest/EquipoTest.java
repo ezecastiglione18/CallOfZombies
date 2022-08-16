@@ -7,8 +7,8 @@ import org.junit.jupiter.api.Assertions;
 
 public class EquipoTest {
   @Test
-  public void todosLosJugadoresSumanPuntos(){
-    Equipo equipo = new Equipo("","");
+  public void todosLosJugadoresSumanPuntos() throws Exception {
+    Equipo equipo = new Equipo("","mail@test.com");
 
     for(Jugador jugador : equipo.jugadores){
       jugador.sumarPuntos(75);
@@ -18,8 +18,8 @@ public class EquipoTest {
   }
 
   @Test
-  public void muereUnJugadorPeroNoPierdePuntosElEquipo(){
-    Equipo equipo = new Equipo("","");
+  public void muereUnJugadorPeroNoPierdePuntosElEquipo() throws Exception {
+    Equipo equipo = new Equipo("","mail@test.com");
 
     for(Jugador jugador : equipo.jugadores){
       jugador.sumarPuntos(75);

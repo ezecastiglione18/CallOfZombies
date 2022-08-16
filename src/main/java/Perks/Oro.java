@@ -3,7 +3,15 @@ package Perks;
 import Jugadores.Jugador;
 
 public class Oro extends Perk {
+    private static Oro instancia = null;
     private int costo = 3000;
+
+    public static Oro GetInstance() {
+        if (instancia == null) {
+            instancia = new Oro();
+        }
+        return instancia;
+    }
 
     @Override
     public int costo() {

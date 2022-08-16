@@ -9,8 +9,8 @@ import org.junit.jupiter.api.Assertions;
 
 public class HumorTest {
   @Test
-  public void mataZobiesYPasaABuenHumor(){
-    Equipo equipo = new Equipo("","");
+  public void mataZombiesYPasaABuenHumor() throws Exception {
+    Equipo equipo = new Equipo("","mail@test.com");
 
     Jugador jugador = equipo.jugador(2);
 
@@ -24,8 +24,8 @@ public class HumorTest {
   }
 
   @Test
-  public void seGeneraConMalHumor(){
-    Equipo equipo = new Equipo("","");
+  public void seGeneraConMalHumor() throws Exception {
+    Equipo equipo = new Equipo("","mail@test.com");
 
     Jugador jugador = equipo.jugador(2);
 
@@ -36,7 +36,7 @@ public class HumorTest {
 
   @Test
   public void estaDeBuenHumorYCompraPerkConDineroInsuficiente() throws Exception {
-    Equipo equipo = new Equipo("","");
+    Equipo equipo = new Equipo("","mail@test.com");
 
     Jugador jugador = equipo.jugador(2);
 

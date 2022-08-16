@@ -14,7 +14,7 @@ public class PartidaTest {
     Partida partida = Partida.GetInstance();
 
     @Test
-    public void seGeneranZombiesCorrectamente(){
+    public void seGeneranZombiesCorrectamente() throws Exception {
         partida.iniciarPartida("Killers", "killers@gmail.com");
         //Equipo equipo = partida.equipo();
 
@@ -22,7 +22,7 @@ public class PartidaTest {
     }
 
     @Test
-    public void seGuardaBienElPuntajeDeEquipoDistintos(){
+    public void seGuardaBienElPuntajeDeEquipoDistintos() throws Exception {
         partida.iniciarPartida("Killers", "killers@gmail.com");
         Equipo equipoKiller = partida.equipo();
 
@@ -34,7 +34,7 @@ public class PartidaTest {
 
         RepositorioPuntajes.GetInstance().agregarPartida(equipoKiller, puntaje);
         ///////////////////////////////////////////////////////////////////////////////////////////////////
-        partida.iniciarPartida("Los mmortales", "");
+        partida.iniciarPartida("Los mortales", "mail@test.com");
         Equipo equipoMortal = partida.equipo();
 
         for(Jugador jugador : equipoMortal.getJugadores()){
@@ -52,7 +52,7 @@ public class PartidaTest {
     }
 
     @Test
-    public void seOrdenanLosElementosDeLaLista(){
+    public void seOrdenanLosElementosDeLaLista() throws Exception {
         partida.iniciarPartida("Killers", "killers@gmail.com");
         Equipo equipoKiller = partida.equipo();
 
@@ -64,7 +64,7 @@ public class PartidaTest {
 
         RepositorioPuntajes.GetInstance().agregarPartida(equipoKiller, puntaje);
         ///////////////////////////////////////////////////////////////////////////////////////////////////
-        partida.iniciarPartida("Los mmortales", "");
+        partida.iniciarPartida("Los mmortales", "mail@test.com");
         Equipo equipoMortal = partida.equipo();
 
         for(Jugador jugador : equipoMortal.getJugadores()){
@@ -75,7 +75,7 @@ public class PartidaTest {
 
         RepositorioPuntajes.GetInstance().agregarPartida(equipoMortal, puntaje2);
         ///////////////////////////////////////////////////////////////////////////////////////////////////
-        partida.iniciarPartida("Los maquinas", "");
+        partida.iniciarPartida("Los maquinas", "mail@test.com");
         Equipo equipoMaquina = partida.equipo();
 
         Integer puntaje3 = equipoMaquina.puntos();

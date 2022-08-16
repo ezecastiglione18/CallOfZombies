@@ -2,7 +2,7 @@ package ControlDelJuego;
 
 import Jugadores.Equipo;
 import Jugadores.Jugador;
-import MailAPI.MailApi;
+import Mail.EnviarMail;
 import Objetos.Objeto;
 import Objetos.ObjetosFactory;
 import Zombies.Zombie;
@@ -33,7 +33,7 @@ public class Partida {
         return equipo;
     }
 
-    public void iniciarPartida(String nombreEquipo, String correoEquipo) {
+    public void iniciarPartida(String nombreEquipo, String correoEquipo) throws Exception {
         this.equipo = new Equipo(nombreEquipo, correoEquipo);
         this.iniciarRonda();
     }
@@ -41,7 +41,7 @@ public class Partida {
     public void finalizarPartida() {
         Integer puntaje = this.equipo.puntos();
         RepositorioPuntajes.GetInstance().agregarPartida(this.equipo, puntaje);
-        MailApi.notificar(this.equipo);
+        EnviarMail.enviarPuntaje(this.equipo.correo(), puntaje);
         equipo = null;
     }
 

@@ -1,6 +1,6 @@
 package Jugadores;
 
-import ControlDelJuego.Partida;
+import Mail.VerificacionMail;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -17,9 +17,13 @@ public class Equipo {
     public ArrayList<Jugador> jugadores = new ArrayList();
     public int puntos = 0;
 
-    public Equipo (String nombre, String correo) {
+    public Equipo() {
+    }
+
+    public Equipo (String nombre, String correo) throws Exception {
         this.nombre = nombre;
         this.correo = correo;
+        VerificacionMail.esMailValido(correo);
         this.jugadores.add(new Jugador());
         this.jugadores.add(new Jugador());
         this.jugadores.add(new Jugador());
@@ -86,5 +90,9 @@ public class Equipo {
 
     public ArrayList<Jugador> getJugadores(){
         return this.jugadores;
+    }
+
+    public String correo() {
+        return correo;
     }
 }

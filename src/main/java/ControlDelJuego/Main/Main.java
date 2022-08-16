@@ -1,4 +1,4 @@
-package Main;
+package ControlDelJuego.Main;
 
 public class Main {
   public static void main(String[] args){
